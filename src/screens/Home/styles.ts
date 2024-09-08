@@ -84,6 +84,7 @@ export const styles = StyleSheet.create({
         marginLeft: 10,
     },
     badgeText: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 12,
         color: 'white',
         fontWeight: 'bold'
@@ -100,11 +101,12 @@ export const styles = StyleSheet.create({
         borderBottomColor: '#808080'
     },
     textBody:{
+        fontFamily: 'Inter_400Regular',
         color: '#808080',
         fontSize: 14
     },
     textBold:{
-        fontWeight: 'bold'
+        fontFamily: 'Inter_700Bold'
     },
     emptyList:{
         justifyContent:"center",

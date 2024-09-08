@@ -18,7 +18,8 @@ export const styles = StyleSheet.create({
         color: '#F2F2F2',
         marginLeft: 8,
         marginRight: 8,
-        fontSize: 14
+        fontSize: 14,
+        fontFamily: 'Inter_400Regular'
     },
     checkbox:{
         borderRadius: 999
