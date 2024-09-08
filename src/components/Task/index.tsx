@@ -1,28 +1,45 @@
-import { View, Image, TouchableOpacity, Text} from 'react-native'
+import { View, Image, TouchableOpacity, Text } from 'react-native'
 import { useState } from 'react'
 import Checkbox from 'expo-checkbox'
 import { styles } from './styles'
 
 type Props = {
     taskName: string,
-    onDelete: () => void
-    onCompletedTask: () => void
+    onDelete: (checked: boolean) => void
+    onCompletedTask: (checked: boolean) => void
 }
 
-export function Task({taskName, onDelete}: Props) {
+export function Task({ taskName, onDelete, onCompletedTask }: Props) {
     const [isSelected, setSelection] = useState(false);
+
+    function handleCheckTask(){
+        var newValueCheck = isSelected ? false : true;
+
+        setSelection(p => p ? false : true);
+        onCompletedTask(newValueCheck);
+    }
+
+    function handleRemoveTask(){
+        onDelete(isSelected);
+    }
 
     return (
         <View style={styles.task}>
-            <Checkbox
-                value={isSelected}
-                onValueChange={setSelection}
-                style={styles.checkbox}                
-            />
-            <Text style={styles.taskText}>{taskName}</Text>
-
             <TouchableOpacity
-                onPress={onDelete}
+                onPress={handleCheckTask}
+                style={styles.regionCheckTask}
+            >
+                <Checkbox
+                    value={isSelected}
+                    onValueChange={handleCheckTask}
+                    style={styles.checkbox}
+                />
+                <Text style={[styles.taskText, isSelected? styles.taskTextCompleted : {}]}>{taskName}</Text>
+
+            </TouchableOpacity>
+            
+            <TouchableOpacity
+                onPress={handleRemoveTask}
             >
                 <Image
                     // style={styles.iconPlus}

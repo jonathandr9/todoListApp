@@ -52,6 +52,9 @@ export const styles = StyleSheet.create({
         padding: 10,
         fontFamily: 'Inter_400Regular',        
     },
+    focusedInput: {
+        borderColor: '#5E60CE'
+    },
     button: {
         marginLeft: 5,
         alignItems: 'center',

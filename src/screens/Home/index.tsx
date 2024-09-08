@@ -9,6 +9,7 @@ export function Home() {
     const [taskName, setTaskName] = useState('');
     const [createdTasks, setCreatedTasks] = useState(0);
     const [endTasks, setEndTasks] = useState(0);
+    const [isFocused, setIsFocused] = useState(false);
     
     function handleTaskAdd(){
 
@@ -22,7 +23,7 @@ export function Home() {
         setTaskName('');
     }
 
-    function handleTaskDelete(taskNameParam: string){
+    function handleTaskDelete(taskNameParam: string, checked: boolean){
         Alert.alert(
             "Remover", 
             `Deseja remover a tarefa?`, [
@@ -30,7 +31,12 @@ export function Home() {
               text: 'Sim',
               onPress: () => {
                 setTasks(prevState => prevState.filter(t => t !== taskNameParam) );
+
                 setCreatedTasks(prevState => prevState -= 1);
+
+                if(checked == true){
+                    setEndTasks(prevState => prevState -= 1);
+                }
               }
             },
             {
@@ -40,8 +46,15 @@ export function Home() {
           ]);   
     }
 
-    function handleTaskCompleted(taskNameParam: string){
-        setEndTasks(p => p += 1)
+    function handleTaskCompleted(checked: boolean){
+          
+        if(checked){
+            setEndTasks(p => p += 1)
+
+        }else{
+            setEndTasks(p => p -= 1)
+
+        }
     }
 
     return (
@@ -58,11 +71,16 @@ export function Home() {
             </View>
             <View style={styles.form}>
                 <TextInput
-                    style={styles.inputForm}
+                    style={[
+                        styles.inputForm,
+                        isFocused ? styles.focusedInput : {}
+                    ]}
                     onChangeText={setTaskName}
                     value={taskName}
                     placeholderTextColor="#808080"
                     placeholder='Adicione uma nova tarefa'
+                    onFocus={() => setIsFocused(true)}
+                    onBlur={() => setIsFocused(false)}
                 />
 
                 <TouchableOpacity
@@ -106,8 +124,8 @@ export function Home() {
                     renderItem={({ item }) => (
                        <Task 
                             taskName={item} 
-                            onDelete={() => handleTaskDelete(item)}
-                            onCompletedTask={() => handleTaskCompleted(item)}
+                            onDelete={(checked) => handleTaskDelete(item, checked)}
+                            onCompletedTask={(checked) => handleTaskCompleted(checked)}
                         />
                     )}
                     ListEmptyComponent={() => (

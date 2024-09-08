@@ -13,13 +13,20 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#262626'
     },
+    regionCheckTask:{
+        flex: 1,
+        flexDirection: 'row'
+    },
     taskText:{
         flex: 1,
         color: '#F2F2F2',
         marginLeft: 8,
         marginRight: 8,
         fontSize: 14,
-        fontFamily: 'Inter_400Regular'
+        fontFamily: 'Inter_400Regular',
+    },
+    taskTextCompleted:{
+        textDecorationLine: 'line-through'
     },
     checkbox:{
         borderRadius: 999
