@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native'
 
+
 export const styles = StyleSheet.create({
+    
     container: {
         flex: 1,
         backgroundColor: '#262626',
@@ -26,7 +28,8 @@ export const styles = StyleSheet.create({
         marginLeft: 20
     },
     titleText: {
-        fontSize: 40,
+        fontSize: 45,
+        fontFamily: 'Inter_900Black',
         color: '#4EA8DE',
     },
     form: {
@@ -35,9 +38,10 @@ export const styles = StyleSheet.create({
         marginTop: 191,
         marginRight: 20,
         marginLeft: 20,
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     inputForm: {
+        height: 60,
         borderRadius: 6,
         flex: 1,
         backgroundColor: '#333333',
@@ -45,14 +49,15 @@ export const styles = StyleSheet.create({
         borderColor: '#0D0D0D',
         color: '#fff',
         fontSize: 16,
-        padding: 5
+        padding: 10,
+        fontFamily: 'Inter_400Regular',        
     },
     button: {
         marginLeft: 5,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 52,
-        height: 52,
+        width: 60,
+        height: 60,
         backgroundColor: '#1E6F9F',
         borderRadius: 6,
     },
@@ -65,8 +70,8 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',        
     },
     infoText: {
+        fontFamily: 'Inter_700Bold',
         fontSize: 16,
-        fontWeight: 'bold',
         color: '#4EA8DE'
     },
     badge: {
@@ -85,11 +90,9 @@ export const styles = StyleSheet.create({
     },
     textBlue: {
         color: '#4EA8DE',
-        fontWeight: 'bold'
     },
     textPurple: {
         color: '#5E60CE',
-        fontWeight: 'bold'
     },
     hr:{
         paddingBottom: 15,
@@ -107,28 +110,5 @@ export const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems: 'center',
         marginTop: 48
-    },
-    // tasks
-    task:{
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#333333',
-        height: 60,
-        marginTop: 5,
-        padding: 12,
-        borderRadius: 8,
-        borderWidth: 1,
-        borderColor: '#262626'
-    },
-    taskText:{
-        flex: 1,
-        color: '#F2F2F2',
-        marginLeft: 8,
-        marginRight: 8,
-        fontSize: 14
-    },
-    checkbox:{
-        borderRadius: 999
     }
 });
