@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#333333',
+        backgroundColor: '#262626',
         // fontFamily: 'inter'
     },
     titleContainer: {
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     },
     bodyContainer: {
         flex: 1,
-        backgroundColor: '#333333',
+        backgroundColor: '#262626',
         paddingTop: 50,
         marginRight: 20,
         marginLeft: 20
@@ -40,9 +40,12 @@ export const styles = StyleSheet.create({
     inputForm: {
         borderRadius: 6,
         flex: 1,
-        backgroundColor: '#262626',
+        backgroundColor: '#333333',
         borderWidth: 1,
-        borderColor: '#0D0D0D'
+        borderColor: '#0D0D0D',
+        color: '#fff',
+        fontSize: 16,
+        padding: 5
     },
     button: {
         marginLeft: 5,
@@ -52,7 +55,10 @@ export const styles = StyleSheet.create({
         height: 52,
         backgroundColor: '#1E6F9F',
         borderRadius: 6,
-        // padding: 18
+    },
+    iconPlus:{
+        width: 16,
+        height: 16
     },
     rowInfo: {
         flexDirection: 'row',
@@ -70,7 +76,6 @@ export const styles = StyleSheet.create({
         width: 20,
         height: 16,
         borderRadius: 999,
-        marginTop: 4,
         marginLeft: 10,
     },
     badgeText: {
@@ -102,5 +107,28 @@ export const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems: 'center',
         marginTop: 48
+    },
+    // tasks
+    task:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#333333',
+        height: 60,
+        marginTop: 5,
+        padding: 12,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#262626'
+    },
+    taskText:{
+        flex: 1,
+        color: '#F2F2F2',
+        marginLeft: 8,
+        marginRight: 8,
+        fontSize: 14
+    },
+    checkbox:{
+        borderRadius: 999
     }
 });

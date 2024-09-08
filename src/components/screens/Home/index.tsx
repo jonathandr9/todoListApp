@@ -1,11 +1,13 @@
 import { View, Text, Image, TextInput, TouchableOpacity, FlatList } from 'react-native'
-import {useState} from 'react'
+import Checkbox from 'expo-checkbox';
+import { useState } from 'react'
 import { styles } from './styles'
 
 
 export function Home() {
 
-    const [tasks, setTasks] = useState<string[]>([]); 
+    const [tasks, setTasks] = useState<string[]>(['Desenvolver aplicativos de forma rápida e bem feita']);
+    const [isSelected, setSelection] = useState(false);
 
     return (
         <View style={styles.container}>
@@ -17,13 +19,17 @@ export function Home() {
             </View>
             <View style={styles.form}>
                 <TextInput
-                    style={styles.inputForm}    
+                    style={styles.inputForm}
                 />
 
                 <TouchableOpacity
                     style={styles.button}
                 >
-                    <Text><Image style={styles.logo} source={require('../../../../assets/plus.png')}></Image></Text>
+
+                    <Image
+                        style={styles.iconPlus}
+                        source={require('../../../../assets/plus.png')}>
+                    </Image>
                 </TouchableOpacity>
             </View>
             <View style={styles.bodyContainer}>
@@ -52,23 +58,37 @@ export function Home() {
                 <View style={styles.hr}></View>
 
                 <FlatList
-                   data={tasks}
-                   keyExtractor={item => item}
-                   showsVerticalScrollIndicator={false}
-                   renderItem={({item}) =>(
-                   <Text></Text>
-          
-                  )}
-                   ListEmptyComponent={() => (
-                    <View style={styles.emptyList}>
-                      <Image source={require('../../../../assets/Clipboard.png')}></Image>
-                      <Text style={[styles.textBody, styles.textBold]}>Você ainda não tem tarefas cadatradas</Text>
-                      <Text style={styles.textBody}>Crie tarefas e organize seus itens a fazer</Text>
-                    </View>
-                  )}
+                    data={tasks}
+                    keyExtractor={item => item}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({ item }) => (
+                        <View style={styles.task}>
+                            <Checkbox
+                                value={isSelected}
+                                onValueChange={setSelection}
+                                style={styles.checkbox}
+                            />
+                            <Text style={styles.taskText}>{item}</Text>
+
+                            <TouchableOpacity>
+                                <Image
+                                    // style={styles.iconPlus}
+                                    source={require('../../../../assets/trash.png')}>
+                                </Image>
+                            </TouchableOpacity>
+                        </View>
+
+                    )}
+                    ListEmptyComponent={() => (
+                        <View style={styles.emptyList}>
+                            <Image source={require('../../../../assets/Clipboard.png')}></Image>
+                            <Text style={[styles.textBody, styles.textBold]}>Você ainda não tem tarefas cadatradas</Text>
+                            <Text style={styles.textBody}>Crie tarefas e organize seus itens a fazer</Text>
+                        </View>
+                    )}
                 />
-      
-       
+
+
             </View>
         </View>
     )
